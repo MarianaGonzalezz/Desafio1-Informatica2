@@ -5,7 +5,7 @@ project(Piezas LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Piezas main.cpp)
+add_executable(Piezas piezas.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS Piezas
