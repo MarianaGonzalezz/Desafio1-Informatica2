@@ -1,14 +1,18 @@
 #include <iostream>
+#include "tablero.h"
+#include "piezas.h"
+#include "interfaz.h"
+
+
 
 using namespace std;
 
-int main()
-{
-    int alto,ancho;
+int main(){
+    int ancho=pedirAncho();
+    int alto=pedirAlto();
 
-    cout<< "=== Bienvenido al Tetris ===" << endl;
-    cout<< " Ingresa la altura del tablero (minimo 8): ";
-    cin>> alto;
-    cout<< " Ingresa el ancho del tablero (multiplo de 8, min 8): ";
-    cin>> ancho;
+    unsigned long long* tablero= CrearTablero(alto);
+
+
+
 }
