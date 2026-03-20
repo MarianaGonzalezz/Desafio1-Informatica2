@@ -71,7 +71,7 @@ void quitarPieza (unsigned long long* tablero, unsigned short pieza, int x, int 
 
                 unsigned long long maskBorrado = ~maskPosicion;
 
-                tablero[filaF]& = maskBorrado;
+                tablero[filaF] &= maskBorrado;
             }
         }
     }
@@ -114,6 +114,17 @@ bool movimientoValido(unsigned long long* tablero,
     return true;
 }
 
+void generarNuevaPieza(unsigned short piezas[],int& indice, unsigned short& piezaActual, int& rotacion,
+                       int& x, int& y, int ancho){
+
+    indice = rand() % 7;
+    piezaActual = piezas[indice];
+
+    rotacion = 0;
+    x = (ancho - 4)/2;
+    y = 0;
+
+}
 
 void ImprimirTablero(unsigned long long*tablero, int alto,int ancho){
 

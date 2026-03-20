@@ -1,14 +1,19 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(Piezas LANGUAGES CXX)
+project(CodigoDesafio LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(Piezas piezas.cpp)
+add_executable(CodigoDesafio 
+			main.cpp
+			tablero.cpp
+			piezas.cpp
+			interfaz.cpp
+)
 
 include(GNUInstallDirs)
-install(TARGETS Piezas
+install(TARGETS CodigoDesafio
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

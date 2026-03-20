@@ -79,7 +79,7 @@ void inicializarJuego(unsigned short piezas[],
 
 void procesoComandos(char comando, unsigned long long* tablero,
                      unsigned short& piezaActual, int& x, int& y,
-                     int& rotacion, int indice, int ancho, int alto){
+                     int& rotacion, int indice, int ancho, int alto, unsigned short piezas[]){
 
     quitarPieza(tablero, piezaActual, x, y);
 
@@ -98,6 +98,9 @@ void procesoComandos(char comando, unsigned long long* tablero,
     else if(comando == 's' || comando == 'S'){
         if(movimientoValido(tablero, piezaActual, x, y+1, ancho, alto)){
             y++;
+        } else {
+            ColocarPieza (tablero, piezaActual, x,y);
+            generarNuevaPieza(piezas, indice, piezaActual, rotacion, x,y,ancho);
         }
     }
 
