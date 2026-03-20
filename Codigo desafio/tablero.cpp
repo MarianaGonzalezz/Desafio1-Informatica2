@@ -55,6 +55,66 @@ int LimpiarFilas(unsigned long long* tablero, int alto, int ancho){
     return filasEliminadas;
 }
 
+
+void quitarPieza (unsigned long long* tablero, unsigned short pieza, int x, int y){
+
+    for (int fila = 0; fila<4 ; fila++){
+        for(int col=0; col<4 ; col++){
+            int bit = 15 - ((fila*4)+ col);
+
+            if((pieza >> bit) & 1){
+
+                int colF = x+col;
+                int filaF = y+fila;
+
+                unsigned long long maskPosicion = 1ull << colF;
+
+                unsigned long long maskBorrado = ~maskPosicion;
+
+                tablero[filaF]& = maskBorrado;
+            }
+        }
+    }
+
+}
+
+
+bool movimientoValido(unsigned long long* tablero,
+                      unsigned short pieza, int x, int y,
+                      int ancho, int alto){
+
+    for (int fila = 0; fila<4 ; fila++){
+        for(int col=0; col<4 ; col++){
+            int bit = 15 - ((fila*4)+ col);
+
+
+            bool hayBloque = (pieza>>bit)& 1;
+
+            if(hayBloque){
+
+                int nuevoX = x+col;
+                int nuevoY = y+fila;
+
+                if (nuevoX<0 || nuevoX >= ancho || nuevoY >= alto){return false;}
+
+
+                if (nuevoY >=0){
+
+                    unsigned long long mask = 1ull<<nuevoX;
+
+                    bool ocupado = tablero [nuevoY] & mask;
+                    if(ocupado){return false;}
+
+                }
+            }
+
+        }
+    }
+
+    return true;
+}
+
+
 void ImprimirTablero(unsigned long long*tablero, int alto,int ancho){
 
     cout<< "Tablero " << alto << "x" << ancho << ":" << endl;

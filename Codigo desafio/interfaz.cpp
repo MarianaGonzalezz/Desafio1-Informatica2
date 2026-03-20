@@ -54,61 +54,63 @@ char leerComando(){
     return tecla;
 }
 
-
-int main(){
+void inicializarJuego(unsigned short piezas[],
+                      int& indice, unsigned short& piezaActual,int& rotacion,
+                      int& x, int& y){
 
     srand(time(0));
-    unsigned short piezas[7] = {
-        0b0000111100000000, // I
-        0b0110011000000000, // O
-        0b0100111000000000, // T
-        0b0110110000000000, // S
-        0b1100011000000000, // Z
-        0b0100010011000000, // J
-        0b1000100011000000 // L
-    };
-
-    int indice = rand()%7;
-    unsigned short piezaActual = piezas[indice];
-    int rotacion = 0;
-
-    //int ancho = pedirAncho();
-    //int alto = pedirAlto();
 
 
+    piezas [0] = 0b0000111100000000; //I
+    piezas [1] = 0b0110011000000000; //O
+    piezas [2] = 0b0100111000000000; //T
+    piezas [3] = 0b0110110000000000; //S
+    piezas [4] = 0b1100011000000000; //Z
+    piezas [5] = 0b0100010011000000; //J
+    piezas [6] = 0b1000100011000000; //L
 
-    //unsigned short rotada = rotarT(piezas[2],0);
+    indice = rand()%7;
 
-    //piezasEnMatriz(rotada);
+    piezaActual = piezas[indice];
+    rotacion = 0;
+    x = 0;
+    y = 0;
+}
 
-    char comando;
-    do{
-        comando = leerComando();
+void procesoComandos(char comando, unsigned long long* tablero,
+                     unsigned short& piezaActual, int& x, int& y,
+                     int& rotacion, int indice, int ancho, int alto){
 
-        if(comando == 'a' || comando == 'A'){
+    quitarPieza(tablero, piezaActual, x, y);
 
+    if(comando == 'a' || comando == 'A'){
+        if(movimientoValido(tablero, piezaActual, x-1, y, ancho, alto)){
+            x--;
         }
+    }
 
-        if(comando == 'd' || comando == 'D'){
-            //
+    else if(comando == 'd' || comando == 'D'){
+        if(movimientoValido(tablero, piezaActual, x+1, y, ancho, alto)){
+            x++;
         }
+    }
 
-        if(comando == 's' || comando == 'S'){
-            //
+    else if(comando == 's' || comando == 'S'){
+        if(movimientoValido(tablero, piezaActual, x, y+1, ancho, alto)){
+            y++;
         }
+    }
 
-        if(comando == 'w' || comando == 'W'){
-            rotacion = (rotacion +1) % 4;
-            piezaActual = rotarConIndice(piezaActual, indice, rotacion);
+    else if(comando == 'w' || comando == 'W'){
+        unsigned short nueva = rotarConIndice(piezaActual, indice, (rotacion+1)%4);
 
-            piezasEnMatriz(piezaActual);
+        if(movimientoValido(tablero, nueva, x, y, ancho, alto)){
+            piezaActual = nueva;
+            rotacion = (rotacion+1)%4;
         }
+    }
 
-        if(comando == 'q' || comando == 'Q'){
-            //
-        }
-    } while (comando!='q' && comando!='Q');
-    cout<<"Juego terminado :) ";
+    ColocarPieza(tablero, piezaActual, x, y);
 
-    return 0;
+
 }

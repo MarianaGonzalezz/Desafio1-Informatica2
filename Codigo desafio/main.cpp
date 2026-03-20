@@ -13,6 +13,29 @@ int main(){
 
     unsigned long long* tablero= CrearTablero(alto);
 
+    unsigned short piezas [7];
+    unsigned short piezaActual;
+    int indice, rotacion, x, y;
 
+    inicializarJuego(piezas, indice, piezaActual, rotacion, x, y);
+
+    //ColocarPieza(tablero, piezaActual, x, y);
+
+    ImprimirTablero(tablero, alto, ancho);
+
+    char comando;
+
+    do{
+        comando = leerComando();
+        procesoComandos(comando, tablero, piezaActual, x, y, rotacion, indice, ancho, alto);
+        LimpiarFilas(tablero, alto, ancho);
+        ImprimirTablero(tablero, alto, ancho);
+
+
+    } while (comando!='q' && comando!='Q');
+    DestruirTablero(tablero);
+    cout<<"Juego terminado :) ";
+
+    return 0;
 
 }
