@@ -71,7 +71,7 @@ void quitarPieza (unsigned long long* tablero, unsigned short pieza, int x, int 
 
                 unsigned long long maskBorrado = ~maskPosicion;
 
-                tablero[filaF]& = maskBorrado;
+                tablero[filaF]&= maskBorrado;
             }
         }
     }
@@ -135,6 +135,25 @@ void ImprimirTablero(unsigned long long*tablero, int alto,int ancho){
     cout<< endl;
 
 }
+
+void ColocarPieza(unsigned long long* tablero, unsigned short piezaActual, int x, int y){
+
+    for(int fila = 0; fila < 4; fila++){
+        for(int col = 0; col < 4; col++){
+            int bit = 15 - ((fila * 4) + col);
+            if((piezaActual >> bit) & 1){
+                int colF  = x + col;
+                int filaF = y + fila;
+                unsigned long long maskPosicion = 1ull << colF;
+                // OR: enciende el bit en el tablero
+                tablero[filaF] |= maskPosicion;
+            }
+        }
+    }
+
+}
+
+
 
 
 

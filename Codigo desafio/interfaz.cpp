@@ -3,6 +3,7 @@
 #include "piezas.h"
 #include "cstdlib"
 #include "ctime"
+#include "tablero.h"
 
 using namespace std;
 
