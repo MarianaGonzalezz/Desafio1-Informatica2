@@ -19,7 +19,7 @@ int main(){
 
     inicializarJuego(piezas, indice, piezaActual, rotacion, x, y);
 
-
+    ColocarPieza(tablero, piezaActual, x, y);
 
     ImprimirTablero(tablero, alto, ancho);
 

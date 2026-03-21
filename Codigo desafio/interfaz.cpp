@@ -1,5 +1,6 @@
 #include "iostream"
 #include "interfaz.h"
+#include "tablero.h"
 #include "piezas.h"
 #include "cstdlib"
 #include "ctime"

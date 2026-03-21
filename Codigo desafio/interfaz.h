@@ -13,4 +13,6 @@ void procesoComandos(char comando, unsigned long long* tablero,
                      unsigned short& piezaActual, int& x, int& y,
                      int& rotacion, int indice, int ancho, int alto, unsigned short piezas[]);
 
+void generarNuevaPieza(unsigned short piezas[],int& indice, unsigned short& piezaActual, int& rotacion,int& x, int& y, int ancho);
+
 #endif
