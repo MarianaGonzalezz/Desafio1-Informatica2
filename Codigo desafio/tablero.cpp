@@ -1,5 +1,7 @@
 #include <iostream>
 #include "tablero.h"
+#include "piezas.h"
+
 using namespace std;
 
 
@@ -118,16 +120,22 @@ bool movimientoValido(unsigned long long* tablero,
     return true;
 }
 
-void generarNuevaPieza(unsigned short piezas[],int& indice, unsigned short& piezaActual, int& rotacion,
-                       int& x, int& y, int ancho){
+bool generarNuevaPieza(unsigned short piezas[],int& indice, unsigned short& piezaActual, int& rotacion,
+                       int& x, int& y, int ancho, unsigned long long* tablero, int alto){
 
     indice = rand() % 7;
-    piezaActual = piezas[indice];
-
     rotacion = 0;
+    piezaActual = rotarConIndice(indice, rotacion);
+
     x = (ancho - 4)/2;
     y = 0;
 
+    //Game Over!
+
+    if(!movimientoValido(tablero, piezaActual, x,y, ancho, alto)){
+        return false;
+    }
+    return true;
 }
 
 void ImprimirTablero(unsigned long long*tablero, int alto,int ancho){

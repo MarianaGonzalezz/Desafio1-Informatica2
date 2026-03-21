@@ -1,4 +1,4 @@
-#include "iostream"
+#include <iostream>
 #include "interfaz.h"
 #include "tablero.h"
 #include "piezas.h"
@@ -81,7 +81,7 @@ void inicializarJuego(unsigned short piezas[],
 
 void procesoComandos(char comando, unsigned long long* tablero,
                      unsigned short& piezaActual, int& x, int& y,
-                     int& rotacion, int indice, int ancho, int alto, unsigned short piezas[]){
+                     int& rotacion, int& indice, int ancho, int alto, unsigned short piezas[], bool& gameOver){
 
     quitarPieza(tablero, piezaActual, x, y);
 
@@ -102,16 +102,35 @@ void procesoComandos(char comando, unsigned long long* tablero,
             y++;
         } else {
             ColocarPieza (tablero, piezaActual, x,y);
-            generarNuevaPieza(piezas, indice, piezaActual, rotacion, x,y,ancho);
+            if(!generarNuevaPieza(piezas, indice, piezaActual, rotacion, x,y,ancho, tablero, alto)){
+                cout<<"\nGAME OVER\n";
+                gameOver = true;
+            }
         }
     }
 
     else if(comando == 'w' || comando == 'W'){
-        unsigned short nueva = rotarConIndice(piezaActual, indice, (rotacion+1)%4);
+
+        //cout << "indice: "<< indice<<endl;
+        //piezasEnMatriz(piezaActual);
+
+        int rotacionActual;
+
+        if (indice == 0 || indice == 3 || indice == 4){ //Piezas con 2 rotaciones
+            rotacionActual = (rotacion + 1) % 2;
+        }
+        else if (indice == 1){ //Pieza con 1 rotacion O
+            rotacionActual = 0;
+        }
+        else { // Piezas con 4 rotaciones
+            rotacionActual = (rotacion +1) % 4;
+        }
+
+        unsigned short nueva = rotarConIndice(indice, rotacionActual);
 
         if(movimientoValido(tablero, nueva, x, y, ancho, alto)){
             piezaActual = nueva;
-            rotacion = (rotacion+1)%4;
+            rotacion = rotacionActual;
         }
     }
 

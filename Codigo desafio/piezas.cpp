@@ -3,34 +3,25 @@
 
 using namespace std;
 
-////Rotar pieza I
-unsigned short rotarI(unsigned short pieza, int rotacion){
+//Rotar pieza I
+
+unsigned short rotarI(int rotacion){
 
     unsigned short rI = 0;
 
-    if (rotacion == 0){
-        unsigned short I1 = 1<<11;
-        unsigned short I2 = 1<<10;
-        unsigned short I3 = 1<<9;
-        unsigned short I4 = 1<<8;
+    if (rotacion == 0){ //base
 
-        if (pieza & I1) rI |= (1<<13);
-        if (pieza & I2) rI |= (1<<9);
-        if (pieza & I3) rI |= (1<<5);
-        if (pieza & I4) rI |= (1<<1);
-
+        rI |= (1<<11);
+        rI |= (1<<10);
+        rI |= (1<<9);
+        rI |= (1<<8);
     }
     else{
 
-        unsigned short I1 = 1<<13;
-        unsigned short I2 = 1<<9;
-        unsigned short I3 = 1<<5;
-        unsigned short I4 = 1<<1;
-
-        if (pieza & I1) rI |= (1<<11);
-        if (pieza & I2) rI |= (1<<10);
-        if (pieza & I3) rI |= (1<<9);
-        if (pieza & I4) rI |= (1<<8);
+        rI |= (1<<13);
+        rI |= (1<<9);
+        rI |= (1<<5);
+        rI |= (1<<1);
     }
 
     return rI;
@@ -38,51 +29,38 @@ unsigned short rotarI(unsigned short pieza, int rotacion){
 
 
 ////Rotar pieza T
-unsigned short rotarT(unsigned short pieza, int rotacion){
+unsigned short rotarT(int rotacion){
 
     unsigned short rT = 0;
 
-    if (rotacion == 0){
+    if (rotacion == 0){ //base
 
-        unsigned short T1 = 1<<14;
-        unsigned short T2 = 1<<11;
-        unsigned short T3 = 1<<10;
-        unsigned short T4 = 1<<9;
 
-        if (pieza & T1) rT |= (1<<14);
-        if (pieza & T2) rT |= (1<<10);
-        if (pieza & T3) rT |= (1<<9);
-        if (pieza & T4) rT |= (1<<6);
+        rT |= (1<<14);
+        rT |= (1<<11);
+        rT |= (1<<10);
+        rT |= (1<<9);
     }
     else if (rotacion == 1){
-        unsigned short T1 = 1<<14;
-        unsigned short T2 = 1<<10;
-        unsigned short T3 = 1<<9;
-        unsigned short T4 = 1<<6;
-        if (pieza & T1) rT |= (1<<11);
-        if (pieza & T2) rT |= (1<<10);
-        if (pieza & T3) rT |= (1<<9);
-        if (pieza & T4) rT |= (1<<6);
+
+        rT |= (1<<14);
+        rT |= (1<<10);
+        rT |= (1<<9);
+        rT |= (1<<6);
     }
     else if (rotacion == 2){
-        unsigned short T1 = 1<<11;
-        unsigned short T2 = 1<<10;
-        unsigned short T3 = 1<<9;
-        unsigned short T4 = 1<<6;
-        if (pieza & T1) rT |= (1<<14);
-        if (pieza & T2) rT |= (1<<11);
-        if (pieza & T3) rT |= (1<<10);
-        if (pieza & T4) rT |= (1<<6);
+
+        rT |= (1<<11);
+        rT |= (1<<10);
+        rT |= (1<<9);
+        rT |= (1<<6);
     }
     else {
-        unsigned short T1 = 1<<14;
-        unsigned short T2 = 1<<11;
-        unsigned short T3 = 1<<10;
-        unsigned short T4 = 1<<6;
-        if (pieza & T1) rT |= (1<<14);
-        if (pieza & T2) rT |= (1<<11);
-        if (pieza & T3) rT |= (1<<10);
-        if (pieza & T4) rT |= (1<<9);
+
+        rT |= (1<<14);
+        rT |= (1<<11);
+        rT |= (1<<10);
+        rT |= (1<<6);
     }
 
     return rT;
@@ -90,33 +68,21 @@ unsigned short rotarT(unsigned short pieza, int rotacion){
 }
 
 ////Rotar pieza S
-unsigned short rotarS(unsigned short pieza, int rotacion){
+unsigned short rotarS( int rotacion){
 
     unsigned short rS = 0;
 
-    if (rotacion == 0){
-
-        unsigned short S1 = 1<<14;
-        unsigned short S2 = 1<<13;
-        unsigned short S3 = 1<<11;
-        unsigned short S4 = 1<<10;
-
-        if (pieza & S1) rS |= (1<<14);
-        if (pieza & S2) rS |= (1<<10);
-        if (pieza & S3) rS |= (1<<9);
-        if (pieza & S4) rS |= (1<<5);
+    if (rotacion == 0){ // base
+        rS |= (1<<14);
+        rS |= (1<<13);
+        rS |= (1<<11);
+        rS |= (1<<10);
     }
     else {
-
-        unsigned short S1 = 1<<14;
-        unsigned short S2 = 1<<10;
-        unsigned short S3 = 1<<9;
-        unsigned short S4 = 1<<5;
-
-        if (pieza & S1) rS |= (1<<14);
-        if (pieza & S2) rS |= (1<<13);
-        if (pieza & S3) rS |= (1<<11);
-        if (pieza & S4) rS |= (1<<10);
+        rS |= (1<<14);
+        rS |= (1<<10);
+        rS |= (1<<9);
+        rS |= (1<<5);
     }
 
     return rS;
@@ -124,34 +90,23 @@ unsigned short rotarS(unsigned short pieza, int rotacion){
 
 ////Rotar pieza Z
 
-unsigned short rotarZ(unsigned short pieza, int rotacion){
+unsigned short rotarZ( int rotacion){
 
     unsigned short rZ = 0;
 
-    if (rotacion == 0){
+    if (rotacion == 0){ //base
 
-        unsigned short Z1 = 1<<15;
-        unsigned short Z2 = 1<<14;
-        unsigned short Z3 = 1<<10;
-        unsigned short Z4 = 1<<9;
+        rZ |= (1<<15);
+        rZ |= (1<<14);
+        rZ |= (1<<10);
+        rZ |= (1<<9);
 
-        if (pieza & Z1) rZ |= (1<<14);
-        if (pieza & Z2) rZ |= (1<<11);
-        if (pieza & Z3) rZ |= (1<<10);
-        if (pieza & Z4) rZ |= (1<<7);
     }
     else {
-
-        unsigned short Z1 = 1<<14;
-        unsigned short Z2 = 1<<11;
-        unsigned short Z3 = 1<<10;
-        unsigned short Z4 = 1<<7;
-
-        if (pieza & Z1) rZ |= (1<<15);
-        if (pieza & Z2) rZ |= (1<<14);
-        if (pieza & Z3) rZ |= (1<<10);
-        if (pieza & Z4) rZ |= (1<<9);
-
+        rZ |= (1<<14);
+        rZ |= (1<<11);
+        rZ |= (1<<10);
+        rZ |= (1<<7);
     }
 
     return rZ;
@@ -159,115 +114,71 @@ unsigned short rotarZ(unsigned short pieza, int rotacion){
 }
 
 ////Rotar pieza J
-unsigned short rotarJ(unsigned short pieza, int rotacion){
+unsigned short rotarJ(int rotacion){
 
     unsigned short rJ = 0;
 
-    if (rotacion == 0){
-
-        unsigned short J1 = 1<<14;
-        unsigned short J2 = 1<<10;
-        unsigned short J3 = 1<<7;
-        unsigned short J4 = 1<<6;
-
-        if (pieza & J1) rJ |= (1<<15);
-        if (pieza & J2) rJ |= (1<<11);
-        if (pieza & J3) rJ |= (1<<10);
-        if (pieza & J4) rJ |= (1<<9);
+    if (rotacion == 0){ //base
+       rJ |= (1<<14);
+       rJ |= (1<<10);
+       rJ |= (1<<7);
+       rJ |= (1<<6);
     }
     else if (rotacion == 1){
-
-        unsigned short J1 = 1<<15;
-        unsigned short J2 = 1<<11;
-        unsigned short J3 = 1<<10;
-        unsigned short J4 = 1<<9;
-
-        if (pieza & J1) rJ |= (1<<14);
-        if (pieza & J2) rJ |= (1<<13);
-        if (pieza & J3) rJ |= (1<<10);
-        if (pieza & J4) rJ |= (1<<6);
+        rJ |= (1<<15);
+        rJ |= (1<<11);
+        rJ |= (1<<10);
+        rJ |= (1<<9);
     }
     else if (rotacion == 2){
-
-        unsigned short J1 = 1<<14;
-        unsigned short J2 = 1<<13;
-        unsigned short J3 = 1<<10;
-        unsigned short J4 = 1<<6;
-
-        if (pieza & J1) rJ |= (1<<11);
-        if (pieza & J2) rJ |= (1<<10);
-        if (pieza & J3) rJ |= (1<<9);
-        if (pieza & J4) rJ |= (1<<5);
+        rJ |= (1<<14);
+        rJ |= (1<<13);
+        rJ |= (1<<10);
+        rJ |= (1<<6);
     }
     else {
-        unsigned short J1 = 1<<11;
-        unsigned short J2 = 1<<10;
-        unsigned short J3 = 1<<9;
-        unsigned short J4 = 1<<5;
-
-        if (pieza & J1) rJ |= (1<<14);
-        if (pieza & J2) rJ |= (1<<10);
-        if (pieza & J3) rJ |= (1<<7);
-        if (pieza & J4) rJ |= (1<<6);
+        rJ |= (1<<11);
+        rJ |= (1<<10);
+        rJ |= (1<<9);
+        rJ |= (1<<5);
     }
     return rJ;
 }
 
 ////Rotar pieza L
 
-unsigned short rotarL(unsigned short pieza, int rotacion){
+unsigned short rotarL(int rotacion){
 
     unsigned short rL = 0;
 
-    if (rotacion == 0){
-
-        unsigned short L1 = 1<<15;
-        unsigned short L2 = 1<<11;
-        unsigned short L3 = 1<<7;
-        unsigned short L4 = 1<<6;
-
-        if (pieza & L1) rL |= (1<<13);
-        if (pieza & L2) rL |= (1<<11);
-        if (pieza & L3) rL |= (1<<10);
-        if (pieza & L4) rL |= (1<<9);
+    if (rotacion == 0){// base
+        rL |= (1<<15);
+        rL |= (1<<11);
+        rL |= (1<<7);
+        rL |= (1<<6);
     }
     else if (rotacion == 1){
-
-        unsigned short L1 = 1<<13;
-        unsigned short L2 = 1<<11;
-        unsigned short L3 = 1<<10;
-        unsigned short L4 = 1<<9;
-
-        if (pieza & L1) rL |= (1<<15);
-        if (pieza & L2) rL |= (1<<14);
-        if (pieza & L3) rL |= (1<<10);
-        if (pieza & L4) rL |= (1<<6);
+        rL |= (1<<11);
+        rL |= (1<<10);
+        rL |= (1<<9);
+        rL |= (1<<7);
     }
     else if (rotacion == 2){
-
-        unsigned short L1 = 1<<15;
-        unsigned short L2 = 1<<14;
-        unsigned short L3 = 1<<10;
-        unsigned short L4 = 1<<6;
-
-        if (pieza & L1) rL |= (1<<11);
-        if (pieza & L2) rL |= (1<<10);
-        if (pieza & L3) rL |= (1<<9);
-        if (pieza & L4) rL |= (1<<7);
+         rL |= (1<<15);
+         rL |= (1<<14);
+         rL |= (1<<10);
+         rL |= (1<<6);
     }
     else {
-        unsigned short L1 = 1<<11;
-        unsigned short L2 = 1<<10;
-        unsigned short L3 = 1<<9;
-        unsigned short L4 = 1<<7;
 
-        if (pieza & L1) rL |= (1<<15);
-        if (pieza & L2) rL |= (1<<11);
-        if (pieza & L3) rL |= (1<<7);
-        if (pieza & L4) rL |= (1<<6);
+         rL |= (1<<13);
+         rL |= (1<<11);
+         rL |= (1<<10);
+         rL |= (1<<9);
     }
     return rL;
 }
+
 
 
 //Funcion para imprimir cada pieza en su representacion en binario y como una matriz 4*4
@@ -286,17 +197,18 @@ void piezasEnMatriz(unsigned short piezas){
     cout<<endl;
 }
 
-unsigned short rotarConIndice(unsigned short pieza, int indice, int rotacion){
+unsigned short rotarConIndice(int indice, int rotacion)
+{
 
     switch(indice){
-        case 0: return rotarI(pieza,rotacion);
-        case 1: return pieza; //Cuadrado no rota
-        case 2: return rotarT(pieza,rotacion);
-        case 3: return rotarS(pieza,rotacion);
-        case 4: return rotarZ(pieza,rotacion);
-        case 5: return rotarJ(pieza,rotacion);
-        case 6: return rotarL(pieza,rotacion);
-        default: return pieza;
+        case 0: return rotarI(rotacion);
+        case 1: return 0b0110011000000000; //Cuadrado no rota
+        case 2: return rotarT(rotacion);
+        case 3: return rotarS(rotacion);
+        case 4: return rotarZ(rotacion);
+        case 5: return rotarJ(rotacion);
+        case 6: return rotarL(rotacion);
+        default: return 0b0110011000000000; // pieza O
     }
 
 }
