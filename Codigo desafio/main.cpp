@@ -27,7 +27,7 @@ int main(){
 
     do{
         comando = leerComando();
-        procesoComandos(comando, tablero, piezaActual, x, y, rotacion, indice, ancho, alto);
+        procesoComandos(comando, tablero, piezaActual, x, y, rotacion, indice, ancho, alto, piezas);
         LimpiarFilas(tablero, alto, ancho);
         ImprimirTablero(tablero, alto, ancho);
 

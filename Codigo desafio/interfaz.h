@@ -11,6 +11,6 @@ void inicializarJuego(unsigned short piezas[],
 
 void procesoComandos(char comando, unsigned long long* tablero,
                      unsigned short& piezaActual, int& x, int& y,
-                     int& rotacion, int indice, int ancho, int alto);
+                     int& rotacion, int indice, int ancho, int alto, unsigned short piezas[]);
 
 #endif
