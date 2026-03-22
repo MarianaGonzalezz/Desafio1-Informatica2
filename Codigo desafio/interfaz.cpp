@@ -102,6 +102,7 @@ void procesoComandos(char comando, unsigned long long* tablero,
             y++;
         } else {
             ColocarPieza (tablero, piezaActual, x,y);
+            LimpiarFilas(tablero, alto, ancho);
             if(!generarNuevaPieza(piezas, indice, piezaActual, rotacion, x,y,ancho, tablero, alto)){
                 cout<<"\nGAME OVER\n";
                 gameOver = true;
