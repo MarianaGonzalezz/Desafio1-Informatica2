@@ -8,8 +8,9 @@ unsigned short rotarZ(unsigned short pieza, int rotacion);
 unsigned short rotarJ(unsigned short pieza, int rotacion);
 unsigned short rotarL(unsigned short pieza, int rotacion);
 
-unsigned short rotarConIndice(unsigned short pieza, int tipo, int rotacion);
+unsigned short rotarConIndice(int indice, int rotacion);
 
 void piezasEnMatriz(unsigned short piezas);
+void ColocarPieza(unsigned long long* tablero, unsigned short pieza, int x, int y);
 
 #endif // PIEZAS_H
